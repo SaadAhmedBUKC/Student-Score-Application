@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">StudentCamp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/students">Home</a>
+                <a class="nav-link" href="/students/new">New Student</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <% if(student.session.user_id != student.user._id) {%>
+                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="/register">Register</a>
+                <% } else {%>
+                <a class="nav-link" href="/logout">Logout</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>
+    <h1><%=student.name%></h1>
+    <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+        <% student.image.forEach((img, i) => { %>
+    <div class="carousel-item <%= i===0 ? 'active' : '' %>">
+        <img src="<%=img.url %>" class="d-block w-100" alt="">
+    </div>
+    <% }) %> 
+  </div>
+  <% if(student.image.length > 1) {%> 
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  <% } %> 
+</div> -->
+
+<!-- 
+    <ul>
+            <li><%=student.enroll%></li>
+            <li><%=student.score%></li>
+    </ul>
+    <a href="/students/<%=student._id%>/edit ">Edit</a>
+    <br>
+    <form action="/students/<%=student._id%>?_method=DELETE" method="POST">
+        <button>Delete</button>
+    </form> -->
+
+
+
+
+<div class="row">
+    <div class="col-6">
+        <div class="card mb-3">
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+        <% student.image.forEach((img, i) => { %>
+    <div class="carousel-item <%= i===0 ? 'active' : '' %>">
+        <img src="<%=img.url %>" class="d-block w-100" alt="">
+    </div>
+    <% }) %> 
+  </div>
+  <% if(student.image.length > 1) {%> 
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  <% } %> 
+</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item text-muted"><%=student.enroll%></li>
+                <li class="list-group-item"><%=student.score%></li>
+            </ul>
+            <div class="card-body">
+                <a class="card-link btn btn-info" href="/students/<%=student._id%>/edit ">Edit</a>
+                <form class="d-inline" action="/students/<%=student._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                    <a class="nav-link" href="/logout">Logout</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
